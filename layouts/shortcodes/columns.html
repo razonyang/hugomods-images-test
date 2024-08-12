@@ -1,0 +1,8 @@
+{{ $colInner := split .Inner "<--->" }}
+{{ $colCount := len $colInner }}
+{{ $colSize := div 12 $colCount }}
+{{- range $colInner }}
+  <div class="col-md-{{ $colSize }}">
+    {{ . | $.Page.RenderString -}}
+  </div>
+{{- end }}

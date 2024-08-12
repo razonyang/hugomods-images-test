@@ -1,0 +1,59 @@
+{{ define "main" }}
+
+<!-- ======= hero Section ======= -->
+{{ partial "blogHead.html" }}
+<!-- End hero Section -->
+
+<!-- ======= title Section ======= -->
+<section class="blog">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9 search">
+        {{ range where .Pages "Type" "post" }}
+        {{ $curPage := . }}
+        <div class="blog-post">
+          <div class="box-img">
+            {{ with .Resources.GetMatch .Params.image }}
+              {{ $image := .Resize "x142" }}
+              <img src="{{ $image.RelPermalink }}" alt="{{ $curPage.Title }}" />
+            {{ end }}
+          </div>
+          <div class="box-content">
+            <h4>{{.Title | markdownify}}</h4>
+            <p>{{.Description | markdownify }}</p>
+            <a href="{{ .Permalink }}">Continue reading</a>
+            <p>
+              <span
+                >{{ dateFormat (.Site.Params.DateForm | default "Mon, Jan 2,2006") .Date }} | {{ .Params.comments | markdownify }}
+                Comments</span
+              >
+            </p>
+          </div>
+        </div>
+        {{end}}
+      </div>
+      <div class="col-md-3">
+        <div class="list-taxonomy">
+          <h3>Categories</h3>
+          <ul>
+            {{range ($.Site.GetPage "taxonomyTerm" "categories").Pages }}
+            <li><a href="{{.Permalink}}">{{.Title}}</a></li>
+            {{end}}
+          </ul>
+        </div>
+        <div class="list-taxonomy mt-5">
+          <h3>Archives</h3>
+          <ul>
+            {{ range .Data.Pages.GroupByDate " January 2006" }}
+            <li><a href="/blog/archives#{{ .Key | urlize }}">{{ .Key }}</a></li>
+
+            {{end}}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End shipping Section -->
+
+{{end}}

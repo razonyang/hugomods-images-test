@@ -1,0 +1,334 @@
+{{ define "main" }}
+
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="hero p-0 d-flex align-items-center">
+  <div class="container" data-aos="fade-up">
+    <div class="row">
+      <div class="col-lg-12 d-flex flex-column justify-content-center text-white">
+        <h1 class="text-center fs-68 mt-3 mt-sm-5 mb-5 fw-bolder">Enhancing the Amateur Radio Hobby</h1>
+        <h2 class="text-center fs-5 w-75 mb-5 w-md-50 mx-auto my-0 ">
+          SignalStuff is dedicated to advancing the Amateur Radio hobby, primarily 
+          through tools and technology to help with study and licensing. Every purchase
+          supports our mission to build quality tools for everyone.
+        </h2>
+        <div class="d-flex justify-content-center">
+          <a class="btn btn-hero-action px-4 py-2" href="/shop/">Shop Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Hero -->
+
+<!-- ======= tools Section ======= -->
+<section class="tools py-0">
+  <div class="container">
+    <!-- block and margin shenanigans below MD to get margin collapsing -->
+    <div class="row text-center d-block d-md-flex flex-column flex-md-row my-5">
+      <div class="d-flex flex-column justify-content-between flex-grow-1 flex-b0 my-4 my-md-0 px-3 px-lg-4">
+        <p>
+          <img src="/assets/img/logo_hamstudy.svg" alt="HamStudy" class="ss-brand-logo" />
+          We created HamStudy to help aspiring hams and those wanting to progress in
+          the hobby <strong>get ready for their license exams.</strong>
+        </p>
+        <div class="d-flex justify-content-center">
+          <a class="btn btn-action-light px-4 py-2" href="https://hamstudy.org/">Go to HamStudy.org</a>
+        </div>
+      </div>
+      <div class="d-flex flex-column justify-content-between flex-grow-1 flex-b0 my-4 my-md-0 px-3 px-lg-4">
+        <p>
+          <img src="/assets/img/logo_examtools.svg" alt="ExamTools" class="ss-brand-logo" />
+          ExamTools gives VE teams the software they need to
+          <strong>administer exams with integrity and efficiency,</strong> 
+          both in-person and remotely, computerized or on paper.
+        </p>
+        <div class="d-flex justify-content-center">
+          <a class="btn btn-action-light px-4 py-2" href="https://examTools.org/">Go to ExamTools.org</a>
+        </div>
+      </div>
+      <div class="d-flex flex-column justify-content-between flex-grow-1 flex-b0 my-4 my-md-0 px-3 px-lg-4">
+        <p>
+          <img src="/assets/img/logo_signalstuff_green_noantenna.svg" alt="SignalStuff" class="ss-brand-logo" />
+          We sell Amateur Radio antenna products such as our popular <strong>Super-Elastic Signal
+          Stick™</strong> to fund software development and keep our software tools available for everyone.
+        </p>
+        <div class="d-flex justify-content-center">
+          <a class="btn btn-action-light px-4 py-2" href="/shop/">Shop Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End tools Section -->
+
+<!-- ======= shipping Section ======= -->
+{{ partial "shipping-brag" . }}
+<!-- End shipping Section -->
+
+<!-- ======= accept Section ======= -->
+<!-- section class="accept">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <div class="box text-center">
+          <p>We accept</p>
+          <img src="/assets/img/payment-icon.png" alt="truck" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section -->
+<!-- End accept Section -->
+
+<!-- ======= production Section ======= -->
+<section class="product">
+  <div class="container">
+    <header class="section-header">
+      <h2 class="fs-42 fw-bold text-center mt-2 p-2">Our most popular products</h2>
+      <a href="/shop">View all our products</a>
+    </header>
+
+    <div class="row">
+
+      {{ range where .Site.Pages "Params.sub_category_code" "signal-sticks" }}
+
+        {{ partial "productListItem.html" . }}
+
+      {{ end }}
+
+    </div>
+  </div>
+</section>
+<!-- End Values Section -->
+
+<!-- ======= feedback Section ======= -->
+<!-- <section class="feedback">
+  <div class="container">
+    <header class="section-header">
+      <h2>What our customers say</h2>
+    </header>
+    <div class="row">
+      <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="box">
+          <img src="/assets/img/user.png" alt="user" class="img-fluid" />
+          <p class="mb-5">
+            "First off, I used hamstudy.org and it was very helpful in getting
+            my General and Extra. I recently bought two of these signal sticks
+            and tried them out on two different HTs. They really work great.
+            Yes, you can coil it up and it pops right back in shape. The price
+            is very reasonable and the shipping was fast."
+            <br /><br />
+            <span>Darren</span>
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="col-lg-4 mt-4 mt-lg-0"
+        data-aos="fade-up"
+        data-aos-delay="400"
+      >
+        <div class="box">
+          <img src="/assets/img/user.png" alt="user" class="img-fluid" />
+          <p class="mb-5">
+            "I can clearly reach a repeater that was mostly static with the
+            stock rubber duck on my Baofeng. It did it’s job. I also want to
+            support the people behind the site (hamstudy.org) that helped me
+            pass the test to get into this hobby. For both of those, it’s an
+            easy 5/5."
+
+            <br /><br />
+            <span>George</span>
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="col-lg-4 mt-4 mt-lg-0"
+        data-aos="fade-up"
+        data-aos-delay="600"
+      >
+        <div class="box">
+          <img src="/assets/img/user.png" alt="user" class="img-fluid" />
+          <p class="mb-5">
+            "I was sceptic, I admit it. I decided to check the SWR on my HT
+            antenna’s out of boredom one day and was shocked. Radio’s D74 and
+            FT3. Stock antenna was 6+ SWR and Diamond SRH320A ($50.00 worth) was
+            8+. So I ordered the Signal stick. SWR is 1.2-1.4. Wow. I can hit
+            repeaters on EL power that required med to high with other
+            antenna’s. Thanks for a Great product at a Great price."
+
+            <br /><br />
+            <span>Lane</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+<!-- End feedback Section -->
+
+<!-- ======= hamapp Section ======= -->
+<section class="hamapp">
+  <div class="container">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-lg-3" data-aos="fade-up">
+        <h3>
+          HamStudy is designed to work with any study method to help you focus
+          your study efforts, make the most of your time, and be ready for your
+          license exam.
+        </h3>
+      </div>
+
+      <div
+        class="col-lg-5 d-flex justify-content-center"
+        data-aos="fade-up"
+        data-aos-delay="200"
+      >
+        <img src="/assets/img/phone.png" alt="" class="img-fluid" />
+      </div>
+
+      <div class="col-lg-4 mt-3 mt-lg-0" data-aos="fade-up" data-aos-delay="400" class="appAd">
+        <h2>HamStudy App</h2>
+        <p>
+          SignalStuff and the HamStudy.org team are focused on providing
+          powerful study tools for everyone. For this reason,
+          <strong>
+            the HamStudy.org online study website is and will always be
+            absolutely free!
+          </strong>
+          <br /><br />
+          For those of you who want to support our work and for anyone who needs
+          the freedom to study without an internet connection, check out our
+          mobile apps!
+        </p>
+        <div class="row align-items-center">
+          <div class="col text-center">
+            <a href="https://itunes.apple.com/us/app/hamstudy-org/id1371288324">
+              <img
+                src="/assets/img/appleappstore.svg"
+                alt="Get the HamStudy app for iOS and Apple Silicon"
+                class="img-fluid"
+              />
+            </a>
+          </div>
+          <div class="col text-center">
+            <a href="https://play.google.com/store/apps/details?id=org.hamstudy.mobile">
+              <img
+                src="/assets/img/googleplay.svg"
+                alt="Get the HamStudy app for Android"
+                class="img-fluid"
+              />
+            </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End feedback Section -->
+
+<!-- ======= video Section ======= -->
+<!--section class="video">
+  <div class="container" data-aos="fade-up">
+    <header class="section-header">
+      <h2>Videos of our products</h2>
+    </header>
+    <div class="row justify-content-center">
+      <div class="col-lg-4" data-aos="fade-up">
+        <iframe
+          width="100%"
+          height="315"
+          src="https://www.youtube.com/embed/sBmYdSXXyag"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+        <p class="text-center">Super-Elastic Signal Sticks in action</p>
+      </div>
+      <div class="col-lg-4" data-aos="fade-up">
+        <iframe
+          width="100%"
+          height="315"
+          src="https://www.youtube.com/embed/m78P7ybf1ds"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+        <p class="text-center">
+          Here is a review from a third party (posted with permission)
+        </p>
+      </div>
+    </div>
+  </div>
+</section-->
+<!-- End video Section -->
+
+<!-- ======= about Section ======= -->
+<section class="about">
+  <div class="container" data-aos="fade-up">
+    <header class="section-header">
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <h2>About SignalStuff</h2>
+          <h6>
+            In a world where Amateur Radio ought to be on the cutting edge of
+            technology, far too often hams are seen as being “old school” and
+            “behind the times.” There's no part of the hobby where this is more
+            painfully obvious than in that of amateur radio license study and
+            examinations.
+          </h6>
+        </div>
+      </div>
+    </header>
+    <!--
+    <div class="row about-row align-items-center justify-content-center">
+      <div class="col-lg-3 box" data-aos="fade-up" data-aos-delay="200">
+        <img src="/assets/img/watch_later.svg" alt="" />
+        <h3>Fast</h3>
+        <p>At magnum periculum adiit in oculis quidem exercitus quid ex.</p>
+      </div>
+      <div class="col-lg-3 box" data-aos="fade-up" data-aos-delay="200">
+        <img src="/assets/img/chat_bubble.svg" alt="" />
+        <h3>Flexible</h3>
+        <p>Epicurus in animis nostris inesse notionem, ut ad naturam aut.</p>
+      </div>
+      <div class="col-lg-3 box" data-aos="fade-up" data-aos-delay="200">
+        <img src="/assets/img/face.svg" alt="" />
+        <h3>Reliable</h3>
+        <p>Sunt autem vel illum, qui dolorem aspernari ut ita ruant.</p>
+      </div>
+    </div>
+  </div>
+-->
+</section>
+<!-- End about Section -->
+
+<!-- ======= questions Section ======= -->
+<!--
+<section class="questions">
+  <div class="container" data-aos="fade-up">
+    <header class="section-header">
+      <h2>Popular questions</h2>
+    </header>
+    <div class="row">
+      {{ range where .Site.Pages "Type" "question" }}
+      <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="box">
+          <p class="mb-5">
+            <strong>{{.Title}}</strong>
+          </p>
+          <p class="mb-5">{{.Description}}</p>
+          <a href="{{.Permalink}}">Read more</a>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+-->
+<!-- End questions Section -->
+
+<!---->
+{{end}}

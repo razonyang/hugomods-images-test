@@ -1,0 +1,125 @@
+
+fragment DetailedProduct on Product {
+  id
+  name
+  description
+  collections {
+    id
+    slug
+    name
+    breadcrumbs {
+      id
+      name
+      slug
+    }
+  }
+  facetValues {
+    facet {
+      id
+      code
+      name
+    }
+    id
+    code
+    name
+  }
+  featuredAsset {
+    id
+    preview
+  }
+  assets {
+    id
+    preview
+  }
+  variants {
+    id
+    name
+    priceWithTax
+    currencyCode
+    sku
+    stockLevel
+    featuredAsset {
+      id
+      preview
+    }
+  }
+}
+
+query product($slug: String, $id: ID) {
+  product(slug: $slug, id: $id) {
+    ...DetailedProduct
+  }
+}
+
+fragment ListedProduct on SearchResult {
+  productId
+  productName
+  slug
+  productAsset {
+    id
+    preview
+  }
+  currencyCode
+  priceWithTax {
+    ... on PriceRange {
+      min
+      max
+    }
+    ... on SinglePrice {
+      value
+    }
+  }
+}
+
+query search($input: SearchInput!) {
+  search(input: $input) {
+    totalItems
+    items {
+      ...ListedProduct
+    }
+    facetValues {
+      count
+      facetValue {
+        id
+        name
+        facet {
+          id
+          name
+        }
+      }
+    }
+  }
+}
+
+
+query ProductSummary($slug:StringOperators) {
+	products(options:{filter:{slug:$slug}}) {
+  	items{
+    	...Product
+    }
+    totalItems
+  }
+}
+fragment Product on Product {
+  id
+  slug
+  updatedAt
+  variants{
+    ...ProductVariant
+  }
+}
+fragment ProductVariant on ProductVariant{
+  id
+  sku
+  price
+  options{
+    code
+    group{
+      code
+    }
+  }
+  customFields{
+    discount_price
+  }
+  stockLevel
+}

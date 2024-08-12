@@ -1,0 +1,132 @@
+{{ define "main" }}
+{{ $categoryAlias := .Params.CategoryAlias }}
+
+{{ partial "shopHead.html" . }}
+
+<!--  Categories/sort order defined in the page md file  -->
+{{ $catOrder := .Params.CategoryOrder }}
+{{ $products := where .Site.Pages "Type" "product" }}
+{{ $products := where $products "Params.category" "ne" nil }}
+
+<!-- Nav -->
+
+<div class="text-center text-ss-grey mt-6">
+  Jump to:
+</div>
+<div class="nav d-flex justify-content-around my-2 pb-2 pill-nav">
+  {{ range $index, $curCategoryName := $catOrder }}
+    {{ $curCategory := where $products "Params.category" $curCategoryName }}
+    {{ $subcategories := where $curCategory "Params.sub_category" "ne" nil }}
+    {{ if gt $index 0 }}
+      <div class="vr"></div>
+    {{ end }}
+    {{ range $idx2, $Key := ($subcategories.GroupByParam "sub_category").Reverse }}
+      {{ $categoryCode := (index .Pages 0).Params.sub_category_code }}
+      {{ if gt $idx2 0 }}
+        <div class="vr"></div>
+      {{ end }}
+      <a href="#{{ $categoryCode }}" class="px-2 text-ss-iris">
+        {{ if eq .Key "Signal Sticks"}}
+        Super-Elastic Signal Stick
+        {{ else }}
+        {{ .Key }}
+        {{ end }}
+      </a>
+    {{ else }}
+      {{ $categoryName := . }}
+      {{ $categoryCode := (index $curCategory 0).Params.category_code }}
+      <a href="#{{ $categoryCode }}" class="px-2 text-ss-iris">{{ $categoryName }}</a>
+    {{ end }}
+  {{ end }}
+</div>
+
+<!-- end Nav -->
+
+<!-- ======= production Section ======= -->
+<section class="product pt-0">
+  <div class="container">
+    <div class="row justify-content-center collection-part">
+      {{ range $catOrder }}
+        {{ $curCategory := where $products "Params.category" . }}
+        {{ $categoryName := . }}
+
+        {{ $subcategories := where $curCategory "Params.sub_category" "ne" nil }}
+        {{ range ($subcategories.GroupByParam "sub_category").Reverse }}
+          {{ $curPages := .Pages }}
+          {{ $categoryCode := (index $curPages 0).Params.sub_category_code }}
+
+          {{ if eq .Key "Signal Sticks"}}
+            <h2 class="text-center p-0 pt-5" id="{{ $categoryCode }}">{{ index $categoryAlias .Key }}</h2>
+
+            <div class="alert alert-light d-flex align-items-center mb-3" role="alert">
+              <i class="fa-duotone fa-circle-info pe-2"></i>
+              <div>
+                Frequency Coverage options: 2m/70cm dual band, 440, or 220 monoband
+              </div>
+            </div> 
+
+            <div class="row justify-content-center">
+              <div class="text-center px-3 mb-4 lh-22 text-ss-grey-dark width-616 fs-15">
+                These are hand-made, ultra lightweight, and nearly indestructible antennas which outperform the stock antenna your handheld radio came with by a significant margin.
+              </div>
+            </div>
+          {{ else }}
+            <h2 class="text-center p-0 pt-5 pb-5" id="{{ $categoryCode }}">{{ $categoryName }} - {{ .Key }}</h2>
+          {{ end }}
+
+          <div class="row">
+            {{ range $curPages }}
+              {{ partial "productListItem.html" . }}
+            {{ end }}
+          </div>
+
+          <hr />
+        {{ else }}
+          {{ $categoryCode := (index $curCategory 0).Params.category_code }}
+          {{ if (ne (index $categoryAlias $categoryName) nil)}}
+            <h2 class="text-center p-0 pt-5 pb-5" id="{{ $categoryCode }}">{{ index $categoryAlias $categoryName }}</h2>
+          {{ else }}
+            <h2 class="text-center p-0 pt-5 pb-5" id="{{ $categoryCode }}">{{ $categoryName }}</h2>
+          {{ end}}
+          <div class="row">
+            {{ range $curCategory }}
+              {{ partial "productListItem.html" . }}
+            {{ end }}
+          </div>
+          <hr />
+        {{ end }}
+      {{ end }}
+    </div>
+  </div>
+</section>
+<!-- End Values Section -->
+
+{{/*  <section class="main-product">
+  <div class="container" data-aos="fade-up">
+    <div class="row justify-content-center">
+      <div class="col-lg-4">
+        <img src="/assets/img/signal.png" alt="" class="img-fluid" />
+      </div>
+      <div class="col-md-6">
+        <h2>Signal Staff Collapsible OSJ</h2>
+        <p>
+          The Signal Staff is a dual band 2 meter / 70 cm Open-Stub J-pole from
+          S&K Antenna Systems! <br /><br />
+          This is a new antenna for us here at SignalStuff made by S&K Antenna
+          Systems who are friends of ours and have assisted in many aspects of
+          Signal Stick manufacturing!
+        </p>
+        <br />
+        <p>In stock</p>
+        <p><span>$60</span></p>
+        <div class="btns">
+          <a href="" class="btn1">Details</a>
+          <a href="" class="btn2">Add to cart</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>  */}}
+
+<!-- End questions Section -->
+{{end}}

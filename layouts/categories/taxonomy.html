@@ -1,0 +1,91 @@
+{{ define "main" }}
+
+<!-- ======= hero Section ======= -->
+<section class="page-hero">
+  <div class="container" data-aos="fade-up">
+    <div class="row justify-content-center text-center">
+      <div class="box">
+        <h2>Category: {{.Title}}</h2>
+        <p>
+          In oculis quidem se ipsam causam non possim accommodare torquatos.
+        </p>
+      </div>
+      <div class="hero-newsletter mt-5">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-12 text-center"></div>
+            <div class="col-lg-6">
+              <form action="" method="post" data-aos="fade-up">
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Search in our blog"
+                /><input type="submit" value="Search" />
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End hero Section -->
+
+<!-- ======= title Section ======= -->
+<section class="blog">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">
+        {{ range where .Pages "Type" "post" }}
+        <div class="blog-post">
+          <div class="box-img">
+            <img src="{{ .Params.image }}" alt="" />
+          </div>
+          <div class="box-content">
+            <h4>{{.Title | markdownify}}</h4>
+            <p>{{.Description | markdownify }}</p>
+            <a href="{{ .Permalink }}">Continue reading</a>
+            <p>
+              <span
+                >{{ dateFormat (.Site.Params.DateForm | default "Mon, Jan 2,2006") .Date }} | {{ .Params.comments | markdownify }}
+                Comments</span
+              >
+            </p>
+          </div>
+        </div>
+        {{end}}
+      </div>
+      <div class="col-md-3">
+        <div class="list-taxonomy">
+          <h3>Categories</h3>
+          <ul>
+            {{range ($.Site.GetPage "taxonomyTerm" "categories").Pages }}
+            <li><a href="{{.Permalink}}">{{.Title}}</a></li>
+            {{end}}
+          </ul>
+        </div>
+        <div class="list-taxonomy mt-5">
+          <h3>Archives</h3>
+          <ul>
+            <li><a href="">November 2019</a></li>
+
+            <li><a href="">November 2018</a></li>
+
+            <li><a href="">January 2018</a></li>
+
+            <li><a href="">November 2017</a></li>
+
+            <li><a href="">April 2017</a></li>
+
+            <li><a href="">August 2016</a></li>
+
+            <li><a href="">July 2016</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End shipping Section -->
+
+{{end}}

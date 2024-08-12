@@ -1,0 +1,292 @@
+fragment Discount on Discount {
+  adjustmentSource
+  amount
+  amountWithTax
+  description
+  type
+}
+
+fragment OrderAddress on OrderAddress {
+  fullName
+  streetLine1
+  streetLine2
+  city
+  province
+  postalCode
+  countryCode
+  phoneNumber
+  customFields {
+    firstName
+    lastName
+    isResidential
+  }
+}
+
+fragment OrderDetail on Order {
+  __typename
+  id
+  code
+  active
+  createdAt
+  state
+  currencyCode
+  totalQuantity
+  subTotal
+  subTotalWithTax
+  taxSummary {
+    description
+    taxRate
+    taxTotal
+  }
+  shipping
+  shippingWithTax
+  total
+  totalWithTax
+  customer {
+    id
+    firstName
+    lastName
+    emailAddress
+    customFields {
+      callsign
+    }
+    user {
+      id
+    }
+  }
+  shippingAddress {
+    ...OrderAddress
+  }
+  billingAddress {
+    ...OrderAddress
+  }
+  shippingLines {
+    shippingMethod {
+      id
+      code
+      name
+    }
+    priceWithTax
+  }
+  lines {
+    ...OrderLine
+  }
+  couponCodes
+  discounts {
+    ...Discount
+  }
+  customFields {
+    carrierCode
+    serviceCode
+    serviceName
+  }
+}
+
+mutation setOrderShippingAddress($input: CreateAddressInput!) {
+  setOrderShippingAddress(input: $input) {
+    ...OrderDetail
+    ... on ErrorResult {
+      errorCode
+      message
+    }
+  }
+}
+
+mutation setOrderBillingAddress($input: CreateAddressInput!) {
+  setOrderBillingAddress(input: $input) {
+    ...OrderDetail
+    ... on ErrorResult {
+      errorCode
+      message
+    }
+  }
+}
+
+mutation setCustomerForOrder($input: CreateCustomerInput!) {
+  setCustomerForOrder(input: $input) {
+    ...OrderDetail
+    ... on ErrorResult {
+      __typename
+      errorCode
+      message
+    }
+  }
+}
+
+mutation addItemToOrder($productVariantId: ID!, $quantity: Int!) {
+  addItemToOrder(productVariantId: $productVariantId, quantity: $quantity) {
+    __typename
+    ...OrderDetail
+    ... on InsufficientStockError {
+      __typename
+      order {
+        ...OrderDetail
+      }
+    }
+    ... on ErrorResult {
+      __typename
+      errorCode
+      message
+    }
+  }
+}
+
+mutation setOrderShippingMethod($shippingMethodId: [ID!]!) {
+  setOrderShippingMethod(shippingMethodId: $shippingMethodId) {
+    ...OrderDetail
+    ... on ErrorResult {
+      errorCode
+      message
+    }
+  }
+}
+
+mutation adjustOrderLine($orderLineId: ID!, $quantity: Int!) {
+  adjustOrderLine(orderLineId: $orderLineId, quantity: $quantity) {
+    __typename
+    ...OrderDetail
+    ... on InsufficientStockError {
+      order {
+        id
+        code
+        state
+        subTotal
+        lines {
+          ...OrderLine
+        }
+      }
+    }
+    ... on ErrorResult {
+      __typename
+      errorCode
+      message
+    }
+  }
+}
+
+mutation removeOrderLine($orderLineId: ID!) {
+  removeOrderLine(orderLineId: $orderLineId) {
+    __typename
+    ...OrderDetail
+    ... on ErrorResult {
+      __typename
+      errorCode
+      message
+    }
+  }
+}
+
+query activeOrderFull {
+  activeOrder {
+    ...OrderDetail
+  }
+}
+
+query orderByCode($code: String!) {
+  orderByCode(code: $code) {
+    ...OrderDetail
+  }
+}
+
+query orderTrackingInfo($orderCode: String!) {
+  orderTrackingInfo(orderCode: $orderCode) {
+     __typename
+     state
+     orderPlaced
+     trackingCodes
+  }
+}
+
+mutation ApplyCouponCode($code: String!) {
+  applyCouponCode(couponCode: $code) {
+    __typename
+    ...OrderDetail
+    ... on ErrorResult {
+      __typename
+      errorCode
+      message
+    }
+  }
+}
+
+mutation RemoveCouponCode($code: String!) {
+  removeCouponCode(couponCode: $code) {
+    __typename
+    ...OrderDetail
+  }
+}
+
+mutation SetOrderCustomField($input: UpdateOrderInput!) {
+  setOrderCustomFields(input: $input) {
+    ...OrderDetail
+    ... on ErrorResult {
+      errorCode
+      message
+    }
+  }
+}
+
+mutation TransitionOrderToState($state: String!) {
+  transitionOrderToState(state: $state) {
+    ...OrderDetail
+    ... on OrderStateTransitionError {
+      errorCode
+      message
+      transitionError
+      fromState
+      toState
+    }
+  }
+}
+
+fragment OrderLine on OrderLine {
+  id
+  quantity
+  unitPrice
+  linePrice
+  discounts {
+    type
+    description
+    amount
+  }
+  productVariant {
+    id
+    name
+    featuredAsset {
+      source
+    }
+    options {
+      name
+      group {
+        name
+      }
+    }
+    product {
+      name
+      slug
+      featuredAsset {
+        source
+      }
+    }
+  }
+}
+
+query activeOrder {
+  activeOrder {
+    ...OrderDetail
+  }
+}
+
+mutation SetTaxCloudAuthorization{
+  setTaxCloudAuthorization {
+   ...OrderDetail
+  }
+}
+
+mutation createGuestOrderCustomerUser($orderCode: String!){
+  createGuestOrderCustomerUser(orderCode: $orderCode) {
+    __typename
+    id
+    emailAddress
+  }
+}

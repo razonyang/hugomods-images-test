@@ -1,0 +1,64 @@
+query availableCountries {
+  availableCountries {
+    id
+    name
+    code
+  }
+}
+
+query eligibleShippingMethods {
+  eligibleShippingMethods {
+    id
+    code
+    name
+    description
+    metadata
+    price
+    priceWithTax
+  }
+}
+
+query authorizeNetKeys {
+  authorizeNetKeys {
+    clientKey
+    loginId
+  }
+}
+
+mutation addPaymentToOrder($input: PaymentInput!) {
+  addPaymentToOrder(input: $input) {
+    ...OrderDetail
+    ... on ErrorResult {
+      errorCode
+      message
+    }
+  }
+}
+
+query eligiblePaymentMethods {
+  eligiblePaymentMethods {
+    id
+    code
+    name
+    description
+    eligibilityMessage
+    isEligible
+  }
+}
+
+query orderShippingRates {
+  orderAllAvailableRates {
+    name
+    code
+    nickname
+    shippingProviderId
+    shippingProviderId
+    primary
+    services {
+      serviceName
+      serviceCode
+      shipmentCost
+      otherCost
+    }
+  }
+}

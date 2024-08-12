@@ -1,0 +1,4 @@
+
+[params]
+backendURL = '/shop-api'
+aNetHost = 'https://js.authorize.net'

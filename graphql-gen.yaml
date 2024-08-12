@@ -1,0 +1,12 @@
+overwrite: true
+generates:
+  signalstuff/src/graphql/generated-shop.ts:
+    schema: "http://localhost:5100/shop-api"
+    documents:
+    - "signalstuff/src/graphql/**/*.graphql"
+    config:
+      enumsAsConst: true
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-generic-sdk"

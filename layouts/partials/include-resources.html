@@ -1,0 +1,29 @@
+{{ $context := .context }}{{ $type := .type }}{{ $entryName := .entryName }}{{/*
+*/}}{{ $defer := false }}{{ if .defer }}{{ $defer = true }}{{ end }}{{/*
+        First get the webpack asset data
+*/}}{{ $assetMap := index site.Data.webpack }}{{/*
+        Next do a lookup for the entrypoint we need (defined by .entryName)
+*/}}{{ $assetListMap := (index $assetMap.entrypoints .entryName).assets }}{{/*
+        If we that entrypoint isn't found, fall back to forLayouts/default
+*/}}{{ if eq $assetListMap nil }}{{/*
+      */}}{{ "<!-- fallback -->" | safeHTML }}{{partial "include-resources" (dict
+            "context" $context
+            "entryName" "forLayout/default"
+            "type" $type
+            )}}{{ "<!-- /fallback -->" | safeHTML }}{{/*
+*/}}{{ else }}{{/* 
+*/}}{{ $assets := index $assetListMap $type }}{{/*
+*/}}{{ range $assets }}{{/*
+    */}}{{ $assetSource := . }}{{/*
+    */}}{{ range $key, $value := $assetMap }}{{ if eq $value.src $assetSource }}{{/*
+*/}}{{if eq $type "js"}}<script
+  type="text/javascript"
+  src="{{ $value.src }}"
+  integrity="{{ $value.integrity }}"
+  charset="utf-8"{{ if $defer }} defer{{ end }}
+></script>{{ printf "<!-- js for %s -->" $entryName | safeHTML }}{{ else if eq $type "css" }}<link
+  rel="stylesheet"
+  href="{{ $value.src }}"
+  integrity="{{ $value.integrity }}"
+  charset="utf-8">{{ printf "<!-- css for %s -->" $entryName | safeHTML }}{{ else }}Invalid asset type {{ $type }}{{ end }}
+{{ end }}{{ end }}{{ end }}{{end}}

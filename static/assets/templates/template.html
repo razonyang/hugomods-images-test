@@ -1,0 +1,147 @@
+<div id="snipcart-templates">
+  <address-fields section="top">
+    <div>
+      <snipcart-label for="phone"> Phone number </snipcart-label>
+      <snipcart-input name="phone"> </snipcart-input>
+    </div>
+  </address-fields>
+  <payment>
+    <div class="snipcart-payment snipcart__box">
+      <div class="snipcart__box--header">
+        <div class="snipcart__box--title">
+          <div
+            class="snipcart__box--badge snipcart__box--badge snipcart__box--badge-highlight snipcart__font--bold snipcart__font--secondary"
+          >
+            {{ number }}
+          </div>
+          <h1 class="snipcart-payment__header snipcart__font--subtitle">
+            {{ $localize("payment.title") }}
+          </h1>
+        </div>
+      </div>
+      <div>
+        <button-primary
+          onclick="performPayment()"
+          label="Proceed To Payment"
+        >
+      </div>
+    </div>
+  </payment>
+  <cart>
+    <section class="snipcart-cart__content">
+      <item-list
+        item-template="item-line"
+        class="snipcart-item-list--no-shadow"
+        :show-description="!isSideCart"
+      >
+        <template
+          v-slot:footer
+          v-if="isSideCart && hasActiveDiscountsTriggerableByCode"
+        >
+          <li class="snipcart-item-line snipcart-item-line--cart-edit">
+            <div class="snipcart-item-line__container">
+              <discount-box class="snipcart-cart__discount-box"></discount-box>
+            </div>
+          </li>
+        </template>
+      </item-list>
+      <div class="snipcart-cart__footer">
+        <div
+          class="snipcart-cart__footer-col cart__footer-discount-box snipcart-cart__actions"
+        >
+          <div
+            class="snipcart-input"
+            v-if="!isSideCart && hasActiveDiscountsTriggerableByCode"
+          >
+            <input
+              type="text"
+              name="code"
+              placeholder="Promo code"
+              v-if="!isSideCart && hasActiveDiscountsTriggerableByCode"
+              oninput="onCodeInput(event)"
+              class="snipcart-input__input snipcart__font--secondary snipcart__font--bold"
+            />
+            <button
+              type="button"
+              v-if="!isSideCart && hasActiveDiscountsTriggerableByCode"
+              class="snipcart-button-link snipcart-discount-box__submit"
+              onclick="applyPromo()"
+            >
+              Apply
+            </button>
+          </div>
+          <br />
+          <button-primary
+            label="Remove Applied Coupon Code"
+            v-if="!isSideCart && hasActiveDiscountsTriggerableByCode"
+            class="removeCode"
+            onclick="removePromo()"
+          ></button-primary>
+        </div>
+        <div class="snipcart-cart__footer-col">
+          <summary-fees
+            class="snipcart-cart-summary-fees--reverse"
+            :summary-data="summaryFeesProvider"
+          >
+            {{ $localize('cart.shipping_taxes_calculated_at_checkout')}}
+          </summary-fees>
+          <footer
+            v-if="!editingCart || isSideCart"
+            class="snipcart-cart__footer-buttons"
+          >
+            <flash-message
+              type="error"
+              v-if="errors != null"
+              :title="$localize('errors.order_validation.custom_fields_validation.title')"
+            >
+              {{$localize('errors.order_validation.custom_fields_validation.description')}}
+            </flash-message>
+            <!-- BUTTON: checkout -->
+            <button-primary
+              label="actions.checkout"
+              icon="continue-arrow"
+              :state="checkoutDisabled ? 'disabled' : undefined"
+              @click="checkout"
+            ></button-primary>
+            <button-link
+              v-if="isSideCart"
+              label="cart.view_detailed_cart"
+              @click="viewDetailedCart"
+            ></button-link>
+          </footer>
+        </div>
+      </div>
+    </section>
+  </cart>
+  <featured-payment-methods>
+    <div class="snipcart-featured-payment-methods">
+      <h3
+        class="snipcart__font--secondary snipcart__font--bold snipcart-featured-payment-methods__title"
+      >
+        <span
+          class="snipcart-featured-payment-methods__link"
+          target="_blank"
+          style="cursor: pointer"
+        >
+          <icon
+            name="lock"
+            class="snipcart-featured-payment-methods__title-icon"
+          ></icon>
+          Secured By SignalStuff
+        </span>
+      </h3>
+      <ul class="snipcart-featured-payment-methods__list">
+        <li class="snipcart-featured-payment-methods__list-item">
+          <icon name="visa" alt="Visa" class="snipcart__icon--brand"></icon>
+        </li>
+        <li class="snipcart-featured-payment-methods__list-item">
+          <icon
+            name="mastercard"
+            alt="Mastercard"
+            class="snipcart__icon--brand"
+          ></icon>
+        </li>
+      </ul>
+    </div>
+  </featured-payment-methods>
+</div>

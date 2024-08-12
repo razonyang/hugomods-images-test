@@ -1,0 +1,25 @@
+{{ define "main" }}
+<!-- ======= shipping Section ======= -->
+{{ partial "shipping-brag" . }}
+<!-- End shipping Section -->
+
+{{/*  <section class="title pb-1" id="inner">
+  <div class="container">
+    <header class="section-big-header text-center">
+      <p>
+        Back to <a href="/">Home Page</a> | <a href="/shop/">Our Products</a>
+      </p>
+      <h1>{{.Title}}</h1>
+    </header>
+  </div>
+</section>  */}}
+
+<!-- ======= content Section ======= -->
+<section class="content pt-0">
+  <div class="container" id="vueRoot">
+    {{ .Content }}
+  </div>
+</section>
+<!-- End content Section -->
+
+{{end}}

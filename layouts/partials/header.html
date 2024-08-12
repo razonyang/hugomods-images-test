@@ -1,0 +1,49 @@
+<nav id="header" class="navbar navbar-expand-lg bg-primary sticky-top">
+  <div class="container-fluid container-xl flex-row">
+    <a class="navbar-brand" href="/">
+      <img src="/assets/img/logo_signalstuff_white_antenna_black.svg" alt="SignalStuff.com Logo" />
+    </a>
+
+    <div class="flex-grow-1"></div>
+
+    <div class="ps-lg-2 order-lg-2" id="cart-button">
+      <button class="btn btn-light position-relative w-100"
+      >
+        <div class="text-nowrap">
+          <i class="fa-duotone fa-basket-shopping pe-2"></i>
+          <span id="cart-total-price"></span>
+        </div>
+      </button>
+    </div>
+    <button class="navbar-toggler ms-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse order-lg-1" id="navbarNav">
+      <ul class="navbar-nav fw-bolder">
+        <li class="nav-item text-nowrap pe-lg-2"><a class="nav-link scrollto" href="/">Home</a></li>
+        <li class="nav-item text-nowrap px-lg-2"><a class="nav-link scrollto" href="/shop">Products</a></li>
+        <li class="nav-item text-nowrap px-lg-2"><a class="nav-link scrollto" href="/blog">Blog</a></li>
+        <li class="nav-item text-nowrap px-lg-2">
+          <a class="nav-link text-nowrap scrollto" href="/about-us">About Us</a>
+        </li>
+        <li class="nav-item text-nowrap px-lg-2"><a class="nav-link scrollto" href="/support">Support</a></li>
+        <li class="nav-item text-nowrap px-lg-2"><a class="nav-link scrollto" href="/apply-affiliate">Apply as Affiliate</a></li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  <script type="text/javascript">
+    const queryString = window.location.search;
+    if(queryString && queryString.length > 0) {
+      const urlParams = new URLSearchParams(queryString);
+      const referral_code = urlParams.get('ref');
+      if(referral_code){
+        const expires = (new Date(Date.now()+ 30*86400*1000)).toUTCString();
+        document.cookie = "referral_code=" + referral_code+", expires=" + expires;
+      }
+    }
+  </script>
+
+</nav>

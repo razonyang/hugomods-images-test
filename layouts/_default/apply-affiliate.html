@@ -1,0 +1,176 @@
+{{ define "main" }}
+<style>
+  .form-group {
+    margin-bottom: 5%;
+  }
+  .affiliate-image {
+   padding-left: 50%;
+  }
+</style>
+<!-- ======= hero Section ======= -->
+<section class="page-hero">
+  <div class="container">
+    <div class="row justify-content-center text-center">
+      <div class="box">
+        <h2>Apply As Affiliate</h2>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End hero Section -->
+
+<section class="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <form id="affiliate-form">
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              id="firstName"
+              name="firstName"
+              placeholder="First Name"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              id="lastName"
+              name="lastName"
+              placeholder="Last Name"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="email"
+              class="form-control"
+              id="emailAddress"
+              name="emailAddress"
+              aria-describedby="emailHelp"
+              placeholder="Email Address"
+              required
+            />
+            <small id="emailHelp" class="form-text text-muted"
+              >We'll never share your email with anyone else.</small
+            >
+          </div>
+          <div class="form-group">
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              name="password"
+              placeholder="Password"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              id="contactID"
+              name="contactID"
+              placeholder="Contact ID"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              id="website"
+              name="website"
+              placeholder="Website (If Any)"
+            />
+          </div>
+          <div class="form-group">
+            <textarea
+              class="form-control"
+              id="Introduction"
+              name="introduction"
+              rows="5"
+              placeholder="Introduction/Details"
+            ></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+      <div class="col-lg-6">
+        <!--img
+          src="/assets/img/affiliate.jpg"
+          alt="affiliate"
+          width="85%"
+          id="affiliate-img"
+        /-->
+      </div>
+    </div>
+  </div>
+</section>
+
+<script type="text/javascript">
+  $("#affiliate-form").submit(function (evt) {
+    evt.preventDefault();
+    const formData = new FormData(evt.target);
+    const formProps = Object.fromEntries(formData);
+    const affiliateApplyQuery = `
+      mutation CreateAffiliate($input: AffiliateAddInput!){
+        createAffiliate(input: $input){
+          id
+        }
+      }
+      `;
+    $.ajax({
+      method: "POST",
+      url: window.backend_url,
+      contentType: "application/json",
+      xhrFields: {
+        withCredentials: true,
+      },
+      crossDomain: true,
+      data: JSON.stringify({
+        query: affiliateApplyQuery,
+        variables: {
+          input: {
+            firstName: formProps.firstName,
+            lastName: formProps.lastName,
+            emailAddress: formProps.emailAddress,
+            password: formProps.password,
+            contactID:
+              formProps.contactID && formProps.contactID != ""
+                ? formProps.contactID
+                : null,
+            website:
+              formProps.website && formProps.website != ""
+                ? formProps.website
+                : null,
+            introduction:
+              formProps.introduction && formProps.introduction != ""
+                ? formProps.introduction
+                : null,
+          },
+        },
+      }),
+      success: function (data) {
+        if (data.errors) {
+          const theMessage =
+            data.errors[0].message ||
+            "Something went wrong. Please try again later.";
+          Notiflix.Notify.failure(theMessage);
+        } else {
+          Notiflix.Notify.success("Application Submitted Successfully.");
+          $("#affiliate-form")[0].reset();
+        }
+      },
+      error: function (err) {
+        Notiflix.Notify.failure(
+          "Something went wrong. Please try again later."
+        );
+      },
+    });
+  });
+</script>
+
+{{end}}

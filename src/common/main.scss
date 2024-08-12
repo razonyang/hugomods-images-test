@@ -1,0 +1,49 @@
+
+@import "./source-sans-3.scss";
+@import "./bootstrap-custom.scss";
+@import "./style.scss";
+
+// Only used in dev mode by the partial "breakpoint.html" to show which breakpoint is active
+.fix-bottom-right {
+  $fontSize: 16px;
+  $height: 1.5em;
+  $width: 7em;
+  $offset: 1.3em;
+  background-color: rgba(0,0,0,0.5); color: white; font-size: $fontSize; line-height: $height;
+  position: fixed; height: $height; width: $width;
+  bottom: calc($height / -2 + $offset); right: calc($width / -2 + $offset);
+  transform: rotate(-45deg);
+  z-index: 10000;
+}
+
+.product h2 {
+  font-size: 46px; font-weight: bolder;
+}
+
+.lh-22 {
+  line-height: 22px;
+}
+.width-616 {
+  width: 616px; max-width: 100%;
+}
+.fs-15 {
+  font-size: 15px;
+}
+.pill-nav { max-width: 800px; margin: 0 auto; }
+
+.product hr {
+  width: 50%; margin-top: 2rem;
+}
+
+// form-sometimes-float is used to make form labels that are floating only
+// when values are there; it requires a bit of help from vue as well
+.form-sometimes-float > .form-control,
+.form-sometimes-float > .form-control-plaintext {
+  padding: 1rem 0.75rem;
+}
+.form-sometimes-float > .form-select {
+  padding-top: 1.625rem;
+  padding-bottom: 0.625rem;
+}
+
+.form-floating > label { color: $ss-grey; }

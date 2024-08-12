@@ -1,0 +1,903 @@
+{
+  "Yaesu/Vertex": [
+    {
+      "model": "FT-65",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "FT-25",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "FT-4VR",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "FT-4XR",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "VX-3R",
+      "connector": "SMA-M",
+      "spacer": "0"
+    },
+    {
+      "model": "VX-5R",
+      "connector": "SMA-M",
+      "spacer": "1"
+    },
+    {
+      "model": "VX-6R",
+      "connector": "SMA-M",
+      "spacer": "0"
+    },
+    {
+      "model": "VX-7R",
+      "connector": "SMA-M",
+      "spacer": "0"
+    },
+    {
+      "model": "VX-8DR",
+      "connector": "SMA-M",
+      "spacer": "0"
+    },
+    {
+      "model": "VX-150R",
+      "connector": "SMA-M",
+      "spacer": "0"
+    },
+    {
+      "model": "VX-250R",
+      "connector": "SMA-M",
+      "spacer": "0"
+    },
+    {
+      "model": "VX-170R",
+      "connector": "SMA-M",
+      "spacer": "0"
+    },
+    {
+      "model": "FT-270R",
+      "connector": "SMA-M",
+      "spacer": "0"
+    },
+    {
+      "model": "VX-177R",
+      "connector": "SMA-M",
+      "spacer": "0"
+    },
+    {
+      "model": "FT-277R",
+      "connector": "SMA-M",
+      "spacer": "0"
+    },
+    {
+      "model": "FT-1DR",
+      "connector": "SMA-M",
+      "spacer": "0"
+    },
+    {
+      "model": "FT-2DR",
+      "connector": "SMA-M",
+      "spacer": "0"
+    },
+    {
+      "model": "FT-3DR",
+      "connector": "SMA-M",
+      "spacer": "0"
+    },
+    {
+      "model": "FT-5DR",
+      "connector": "SMA-M",
+      "spacer": "0"
+    },
+    {
+      "model": "FT-50R",
+      "connector": "SMA-M",
+      "spacer": "3d"
+    },
+    {
+      "model": "FT-60R",
+      "connector": "SMA-M",
+      "spacer": "3d"
+    },
+    {
+      "model": "FT-70R",
+      "connector": "SMA-M",
+      "spacer": "0"
+    },
+    {
+      "model": "FT-470",
+      "connector": "BNC",
+      "spacer": "0"
+    },
+    {
+      "model": "FT-411E",
+      "connector": "BNC",
+      "spacer": "0"
+    },
+    {
+      "model": "FT-11R",
+      "connector": "BNC",
+      "spacer": "0"
+    },
+    {
+      "model": "FT-51R",
+      "connector": "BNC",
+      "spacer": "0"
+    },
+    {
+      "model": "VX-1R",
+      "connector": "SMA-M",
+      "spacer": "?"
+    },
+    {
+      "model": "VX-180",
+      "connector": "SMA-M",
+      "spacer": "?"
+    },
+    {
+      "model": "VX-160",
+      "connector": "SMA-M",
+      "spacer": "?"
+    },
+    {
+      "model": "VX-131",
+      "connector": "SMA-M",
+      "spacer": "?"
+    },
+    {
+      "model": "VX-231",
+      "connector": "SMA-M",
+      "spacer": "?"
+    },
+    {
+      "model": "VX-350",
+      "connector": "SMA-M",
+      "spacer": "?"
+    },
+    {
+      "model": "VX-351",
+      "connector": "SMA-M",
+      "spacer": "?"
+    },
+    {
+      "model": "VX-354",
+      "connector": "SMA-M",
+      "spacer": "?"
+    },
+    {
+      "model": "VX-410",
+      "connector": "SMA-M",
+      "spacer": "?"
+    },
+    {
+      "model": "VX-420",
+      "connector": "SMA-M",
+      "spacer": "?"
+    },
+    {
+      "model": "VX-821",
+      "connector": "SMA-M",
+      "spacer": "?"
+    }
+  ],
+  "Retevis/Ailunce": [
+    {
+      "model": "RT85",
+      "connector": "SMA-M",
+      "spacer": "?"
+    },
+    {
+      "model": "RT29",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "RT5",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "RA685",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "HD1",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "RB17V",
+      "connector": "SMA-M",
+      "spacer": "?"
+    },
+    {
+      "model": "RT3S",
+      "connector": "SMA-M",
+      "spacer": "0"
+    },
+    {
+      "model": "RT21V",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "RT47V",
+      "connector": "SMA-M",
+      "spacer": "?"
+    },
+    {
+      "model": "RT82",
+      "connector": "SMA-M",
+      "spacer": "?"
+    },
+    {
+      "model": "RT1",
+      "connector": "SMA-M",
+      "spacer": "?"
+    },
+    {
+      "model": "RT2",
+      "connector": "SMA-M",
+      "spacer": "?"
+    },
+    {
+      "model": "RT21",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "RT8",
+      "connector": "SMA-M",
+      "spacer": "?"
+    },
+    {
+      "model": "RB27V",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "RB25",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "HA1G",
+      "connector": "SMA-M",
+      "spacer": "?"
+    },
+    {
+      "model": "HD2",
+      "connector": "SMA-F",
+      "spacer": "0"
+    }
+  ],
+  "TIDRADIO": [
+    {
+      "model": "TD-H8",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "TD-H6",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "TD-H3",
+      "connector": "SMA-F",
+      "spacer": "0"
+    }
+  ],
+  "Anytone": [
+    {
+      "model": "D878UVII",
+      "connector": "SMA-F",
+      "spacer": "0"
+    }
+  ],
+  "Alinco": [
+    {
+      "model": "DJ-MD5",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "DJ-V5",
+      "connector": "SMA-M",
+      "spacer": "?"
+    },
+    {
+      "model": "DJ-V5T",
+      "connector": "SMA-M",
+      "spacer": "?"
+    },
+    {
+      "model": "DJ-V5E",
+      "connector": "SMA-M",
+      "spacer": "?"
+    },
+    {
+      "model": "DJ-G7",
+      "connector": "SMA-M",
+      "spacer": "?"
+    },
+    {
+      "model": "DJ-G7T",
+      "connector": "SMA-M",
+      "spacer": "?"
+    },
+    {
+      "model": "DJ-G7E",
+      "connector": "SMA-M",
+      "spacer": "?"
+    },
+    {
+      "model": "DJ-VX50H",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "DJ-VX50T",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "DJ-500T",
+      "connector": "SMA-F",
+      "spacer": "0"
+    }
+  ],
+  "Kenwood": [
+    {
+      "model": "NX-5300",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "TH-D72A",
+      "connector": "SMA-M",
+      "spacer": "?"
+    },
+    {
+      "model": "TH-D72E",
+      "connector": "SMA-M",
+      "spacer": "?"
+    },
+    {
+      "model": "TH-D74A",
+      "connector": "SMA-M",
+      "spacer": "?"
+    },
+    {
+      "model": "TH-D75A",
+      "connector": "SMA-M",
+      "spacer": "?"
+    },
+    {
+      "model": "TH-D7A",
+      "connector": "SMA-M",
+      "spacer": "?"
+    },
+    {
+      "model": "TH-D7E",
+      "connector": "SMA-M",
+      "spacer": "?"
+    },
+    {
+      "model": "TH-F6A",
+      "connector": "SMA-M",
+      "spacer": "?"
+    },
+    {
+      "model": "TH-G71A",
+      "connector": "SMA-M",
+      "spacer": "?"
+    },
+    {
+      "model": "TH-G71E",
+      "connector": "SMA-M",
+      "spacer": "?"
+    },
+    {
+      "model": "TK-2107",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "TK-2260",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "TK-278",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "TK-3107",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "TK-3160",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "TK-3260",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "TK-378",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "TH-K20",
+      "connector": "SMA-M",
+      "spacer": "0"
+    }
+  ],
+  "Wouxun": [
+    {
+      "model": "KG-805G",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "KG-S88G",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "KG-UV2D",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "KG-UV3D",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "KG-UV6D",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "KG-UV8D",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "KG-UV8H",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "KG-UV9D",
+      "connector": "SMA-M",
+      "spacer": "?"
+    },
+    {
+      "model": "KG-UV9PX",
+      "connector": "SMA-M",
+      "spacer": "?"
+    },
+    {
+      "model": "KG-UV9P",
+      "connector": "SMA-M",
+      "spacer": "?"
+    },
+    {
+      "model": "KG-UVD1P",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "KG-UV7D",
+      "connector": "SMA-M",
+      "spacer": "1"
+    },
+    {
+      "model": "KG-UV6X",
+      "connector": "SMA-M",
+      "spacer": "?"
+    },
+    {
+      "model": "KG-935G",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "KG-UV7D",
+      "connector": "SMA-M",
+      "spacer": "1"
+    },
+    {
+      "model": "KG-UV9GX",
+      "connector": "SMA-M",
+      "spacer": "1"
+    },
+    {
+      "model": "KG-Q10H",
+      "connector": "SMA-F",
+      "spacer": "0"
+    }
+  ],
+  "Others": [
+    {
+      "model": "Harris ???",
+      "connector": "Deep SMA-M, adapter only",
+      "spacer": "0"
+    },
+    {
+      "model": "Explorer QRZ-1",
+      "connector": "SMA-M",
+      "spacer": "1"
+    },
+    {
+      "model": "Rocky Talkie 5 watt",
+      "connector": "SMA-M",
+      "spacer": "0"
+    },
+    {
+      "model": "Uniden SDS100",
+      "connector": "Deep SMA-M, adapter only",
+      "spacer": "0"
+    },
+    {
+      "model": "VGC VR-N76",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "TalkPod A36Plus",
+      "connector": "SMA-F",
+      "spacer": "?"
+    }
+  ],
+  "TYT": [
+    {
+      "model": "UV-88",
+      "connector": "SMA-M",
+      "spacer": "?"
+    },
+    {
+      "model": "TH-350",
+      "connector": "SMA-M",
+      "spacer": "?"
+    }
+  ],
+  "Icom": [
+    {
+      "model": "ID-51",
+      "connector": "SMA-M",
+      "spacer": "1"
+    },
+    {
+      "model": "ID-31",
+      "connector": "SMA-M",
+      "spacer": "1"
+    },
+    {
+      "model": "ID-50",
+      "connector": "SMA-M",
+      "spacer": "1"
+    },
+    {
+      "model": "ID-52",
+      "connector": "SMA-M",
+      "spacer": "1"
+    },
+    {
+      "model": "ID-32",
+      "connector": "SMA-M",
+      "spacer": "1"
+    },
+    {
+      "model": "IC-2AT",
+      "connector": "SMA-M",
+      "spacer": "1"
+    },
+    {
+      "model": "IC-F4GS",
+      "connector": "SMA-M",
+      "spacer": "1"
+    },
+    {
+      "model": "IC-T70A",
+      "connector": "SMA-M",
+      "spacer": "1"
+    },
+    {
+      "model": "IC-T90A",
+      "connector": "SMA-M",
+      "spacer": "1"
+    },
+    {
+      "model": "IC-V80",
+      "connector": "BNC",
+      "spacer": "0"
+    },
+    {
+      "model": "IC-V86",
+      "connector": "BNC",
+      "spacer": "0"
+    },
+    {
+      "model": "IC-V8",
+      "connector": "BNC",
+      "spacer": "0"
+    },
+    {
+      "model": "IC-T91",
+      "connector": "SMA-M",
+      "spacer": "1"
+    },
+    {
+      "model": "IC-T92",
+      "connector": "SMA-M",
+      "spacer": "1"
+    },
+    {
+      "model": "IC-F50",
+      "connector": "SMA-M",
+      "spacer": "1"
+    },
+    {
+      "model": "IC-M88",
+      "connector": "SMA-M",
+      "spacer": "1"
+    },
+    {
+      "model": "IC-Q7A",
+      "connector": "SMA-M",
+      "spacer": "1"
+    },
+    {
+      "model": "IC-R5",
+      "connector": "SMA-M",
+      "spacer": "1"
+    },
+    {
+      "model": "IC-T10",
+      "connector": "SMA-M",
+      "spacer": "1"
+    },
+    {
+      "model": "IC-W32A",
+      "connector": "BNC",
+      "spacer": "0"
+    },
+    {
+      "model": "IC-705",
+      "connector": "BNC",
+      "spacer": "0"
+    },
+    {
+      "model": "IC-T7H",
+      "connector": "BNC",
+      "spacer": "0"
+    }
+  ],
+  "Quansheng": [
+    {
+      "model": "UVK5 / K5(8)",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "UVK6",
+      "connector": "SMA-F",
+      "spacer": "0"
+    }
+  ],
+  "Radioddity": [
+    {
+      "model": "GM-30",
+      "connector": "SMA-M",
+      "spacer": "1"
+    },
+    {
+      "model": "GS-5B",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "GD-AT10G",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "GA-510",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "GD-88",
+      "connector": "SMA-M",
+      "spacer": "?"
+    },
+    {
+      "model": "GD-77",
+      "connector": "SMA-M",
+      "spacer": "?"
+    },
+    {
+      "model": "GC-5",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "GA-5E",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "GA-5WB",
+      "connector": "SMA-F",
+      "spacer": "0"
+    }
+  ],
+  "Baofeng/BTech": [
+    {
+      "model": "BF-F8HP",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "BF-F8",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "UV-5R",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "UV-5RA",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "UV-5RM",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "UV-5X3",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "GMRS-V1",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "UV-82",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "UV-82HP",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "UV-82C",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "BF-888S",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "UV-B5",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "GT-3",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "Generic/Typical",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "UV-3R",
+      "connector": "SMA-M",
+      "spacer": "0"
+    },
+    {
+      "model": "GMRS Pro",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "GT-5R",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "UV-S9X3",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "UV-13 Pro",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "TP8 Plus",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "BF-H6",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "BF-A58",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "UV-5G",
+      "connector": "SMA-M",
+      "spacer": "?"
+    },
+    {
+      "model": "UV-5G Plus",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "UV-88",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "DMR-6X2 PRO",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "UV-16 Pro",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "DM-1701",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "UV-17R Plus",
+      "connector": "SMA-F",
+      "spacer": "0"
+    },
+    {
+      "model": "AR-5RM",
+      "connector": "SMA-F",
+      "spacer": "0"
+    }
+  ]
+}

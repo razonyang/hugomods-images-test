@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  {{ partial "head.html" . }}
+
+  <body>
+
+    <!-- ======= Header ======= -->
+    {{ partial "header.html" .}}
+    <!-- End Header -->
+
+    <main id="main">
+      {{ block "main" . }}
+      <!-- The part of the page that begins to differ between templates -->
+      {{ end }}
+{{ printf "<!-- page layout %s -->" .Layout | safeHTML }}
+{{ printf "<!-- page type %s -->" .Type | safeHTML }}
+{{ printf "<!-- page kind %s -->" .Kind | safeHTML }}
+      
+{{ $resourcePath := (printf "forLayout/%s" .Layout) }}
+{{ if .Params.resourcePath }}{{ $resourcePath = .Params.resourcePath }}{{ printf "<!-- should use %s -->" $resourcePath | safeHTML }}{{ end }}
+{{ partial "include-resources" (dict
+  "context" .
+  "entryName" $resourcePath 
+  "type" "js"
+) }}
+
+
+    </main>
+    <!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+    {{ partial "footer.html" .}}
+    <!-- End Footer -->
+
+    {{ partial "script.html" .}}
+
+    {{ if not hugo.IsProduction }}
+      {{ partial "breakpoint.html" . }}
+    {{ end }}
+
+  </body>
+</html>

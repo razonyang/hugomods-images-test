@@ -1,0 +1,203 @@
+{{ define "main" }}
+<!-- Demo styles -->
+<style>
+  .image {
+    position: relative;
+    height: 100%;
+  }
+
+  .image {
+    background: #eee;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #000;
+    margin: 0;
+    padding: 0;
+  }
+
+  .image {
+    background: #fff;
+    color: #000;
+  }
+
+  div.content > .subtitle {
+    margin-top: -1.5rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+</style>
+<script type="text/javascript">
+  window.productSlug = {{ .Params.slug | jsonify | safeJS }};
+  window.productOptions = {{ .Params.options | jsonify | safeJS }};
+  window.productVariants = {{ .Params.variants | jsonify | safeJS }};
+</script>
+{{ $Params := .Params }}
+<!-- ======= shipping Section ======= -->
+{{ partial "shipping-brag" . }}
+<!-- End shipping Section -->
+
+<!-- ======= title Section ======= -->
+<section class="title" id="inner">
+  <div class="container">
+    <header class="section-big-header text-center">
+      <p class="fs-5">
+        <span class="pe-3">Back to:</span><a href="/">Home Page</a> | <a href="/shop/">Our Products</a>
+      </p>
+      <h1 class="text-46px">Super-Elastic Signal Stick</h1>
+      <div class="product-rew d-flex justify-content-center">
+        <div class="starts">
+          {{ range $index, $val:= .Params.rating }} {{ if eq $val "0.5" }}
+            <i class="fa-duotone fa-star-half"></i>
+          {{ else }}
+            <i class="fa-solid fa-star"></i>
+          {{ end }} {{ end }}
+        </div>
+        <div class="number">
+          <a href="">
+            {{ if .Params.reviews}} {{ len .Params.reviews }} customers' review
+            {{ else }} 0 customers' review {{end}}
+          </a>
+          |
+          <a href="">Write a review</a>
+        </div>
+      </div>
+    </header>
+  </div>
+</section>
+<!-- End title Section -->
+
+<!-- ======= products Section ======= -->
+<section class="products pt-0">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 images d-flex flex-wrap align-content-start" id="galleryContainer">
+        {{ range $index, $img := .Params.multimedia.images }}
+        <div class="imagetile flex-grow-1">
+          <img class="img-fluid p-0 m-0" src="{{ $img | absURL }}?width=600" data-src="{{ $img | absURL }}" data-gallery="product" data-idx="{{$index}}" />
+        </div>
+        {{ end }}
+      </div>
+
+      <div class="col-lg-6 content">
+        <h2 class="mb-4 main-name" id="title" data-prefix="{{ $Params.connector_type }}" data-slug="{{ $Params.slug }}">{{ $Params.connector_type }}</h2>
+        <div class="subtitle" id="subtitle">&nbsp;</div>
+
+        <div class="description mb-4 text-ss-grey">{{ $Params.summary }}</div>
+
+        {{ $option := index $Params.options 0 }}
+        <div class="option-{{ $option.code }} pb-3">
+          <strong class="d-block pb-2">{{ $optionName := $option.name }}{{/*
+            */}}{{ if and $Params.optionMap (index $Params.optionMap $option.code) }}{{/*
+              */}}{{ $optionName = index $Params.optionMap $option.code }}{{/*
+            */}}{{ end }}
+              {{ $optionName }}
+          </strong>
+          <div class="product-options d-flex flex-wrap" role="group" aria-label="{{ $optionName }} - option button group" data-option-code="{{ $option.code }}">
+            {{ range $index, $val := $option.valueCodes }}
+              <input type="radio" class="btn-check" name="option-{{ $option.code }}"
+                id="option-{{ $option.code }}-{{ $val }}" autocomplete="off" value="{{ $val }}"
+                data-option-name="{{ index $option.values $index }}"
+              >
+              <label class="btn btn-outline-grey flex-grow-1 flex-b25 m-1" for="option-{{ $option.code }}-{{ $val }}" id="option-{{ $option.code }}-{{ $val }}-lbl">{{ index $option.values $index }}</label>
+            {{ end }}
+          </div>
+        </div>
+
+        {{ $option = index $Params.options 1 }}
+        <!-- Special handling for the color selectors -->
+        <div class="option-{{ $option.code }} pb-3">
+          <strong class="d-block pb-2">{{ $optionName := $option.name }}{{/*
+            */}}{{ if and $Params.optionMap (index $Params.optionMap $option.code) }}{{/*
+              */}}{{ $optionName = index $Params.optionMap $option.code }}{{/*
+            */}}{{ end }}
+              {{ $optionName }}
+          </strong>
+          <div class="product-options d-flex flex-wrap" role="group" aria-label="{{ $optionName }} - option button group" data-option-code="{{ $option.code }}">
+            {{ range $index, $val := $option.valueCodes }}
+              <input type="radio" class="btn-check" name="option-{{ $option.code }}"
+                id="option-{{ $option.code }}-{{ $val }}" autocomplete="off" value="{{ $val }}"
+                data-option-name="{{ index $option.values $index }}"
+              >
+              <label class="btn btn-outline-grey m-1 flex-b25 flex-grow-1 m-1" for="option-{{ $option.code }}-{{ $val }}" id="option-{{ $option.code }}-{{ $val }}-lbl">
+                {{ index $option.values $index }}
+              </label>
+            {{ end }}
+          </div>
+        </div>
+
+        <div class="price-div">
+          <h3 class="price py-4 main-price">
+            <span id="display-price"></span>
+            <span id="stocklevel-display" class="badge ms-3 bg-primary"></span>
+          </h3>
+          <p id="backorderNotice" class="text-danger d-none">
+            Backordered products should ship within 1-2 weeks.
+          </p>
+          <p id="shippingNotice">
+            Most orders are shipped out on the next business day.
+          </p>
+        </div>
+
+        <!--div class="collection-div">
+          Category: {{ .Params.collection_name }}
+        </div-->
+
+        <div id="stockLevel" class="my-3">
+          <strong id=""></strong>
+        </div>
+
+        <div class="pr-btn">
+          {{ if .Params.hasVariants }}
+            <a
+              href=""
+              class="buy-button btn btn-primary disabled main-button main-toggled"
+              >Please select options above
+            </a>
+          {{ else }}
+            <a
+              href=""
+              class="buy-button btn btn-primary main-button"
+              data-item-id="{{.Title | urlize}}__{{if .Params.discount_price}}{{.Params.discount_price}}{{else}}{{.Params.price}}{{end}}"
+              data-item-name="{{.Title}}"
+              data-item-image="{{with .Params.Images}} {{range first 1 . }}{{. | absURL}}{{end}}{{end}}"
+              data-item-price="{{if .Params.discount_price}}{{.Params.discount_price}}{{else}}{{.Params.price}}{{end}}"
+              data-item-url="{{.Permalink}}"
+              >Add To Cart
+            </a>
+          {{ end }}
+          
+          {{ range $sku, $variant := $.Params.variants }}
+            {{ $images := $variant.imageLinks}}
+            {{ $discPrice := $variant.discountPrice }}
+            {{ $realPrice := $variant.price }}
+            {{ $permalink := $.Permalink }}
+            <a
+              href=""
+              class="btn btn-primary buy-button variant-buttons btn-disabled toggleable {{ $sku }}"
+              id="variant_button_{{ $sku }}"
+              data-item-id="{{ $variant.id }}"
+              data-item-sku="{{ $variant.sku }}"
+              data-item-name="{{ $variant.name }}"
+              data-item-url="{{ $permalink }}" {{/*
+                For each option type, add a data attribute with the option code and the variant's value.
+            */}}{{ range $index, $val := $.Params.options }}{{ $optCode := $val.code }}{{/*
+            */}}data-item-{{ $optCode }}="{{ (index $variant $val.code).code }}" {{/*
+              */}}{{ end }}
+            >
+              Add To Cart
+            </a>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <h2>Description</h2>
+      <p>{{.Content | safeHTML}}</p>
+      <!----->
+
+    </div>
+  </div>
+</section>
+
+{{end}}

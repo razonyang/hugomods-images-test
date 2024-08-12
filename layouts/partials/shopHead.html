@@ -1,0 +1,47 @@
+
+<!-- ======= shipping Section ======= -->
+<div data-aos="fade-up">
+  {{ partial "shipping-brag" . }}
+</div>
+<!-- End shipping Section -->
+
+<!-- ======= title Section ======= -->
+<section class="title pb-0" id="inner">
+  <div class="container">
+    <header class="section-big-header text-center">
+      <h1>{{ .Title }}</h1>
+      <p class="text-ss-grey-dark">
+        All sales support the development of HamStudy, ExamTools, and other
+        community-building efforts
+      </p>
+    </header>
+    <div class="row justify-content-center">
+      <div class="card bg-ss-grey-lightest w-100">
+        <div class="card-body my-3">
+          <h4 class="p-0 m-0 text-center">Help me find the right antenna</h4>
+
+          <form id="modelSelectorForm">
+            <div class="row align-items-center justify-content-center mt-3">
+              <div class="col-12 d-flex flex-column flex-sm-row">
+                <select class="form-select flex-grow-1 m-1 text-ss-grey" id="radioBrandSelector">
+                  <option value="" selected>Loading brands...</option>
+                </select>
+                <select class="form-select flex-grow-1 m-1 text-ss-grey" id="radioModelSelector">
+                  <option value="" selected>
+                    (no brand selected)
+                  </option>
+                </select>
+                <input type="submit" value="Search" class="btn btn-action-light m-1 w-100" style="flex-basis: 25%" />
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <p id="selectBoth" class="text-center">
+          Please select both radio brand and model
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End shipping Section -->

@@ -1,0 +1,12 @@
+<a href="#" id="back-to-top" class="d-flex align-items-center justify-content-center text-white"
+  ><i class="fa-duotone fa-arrow-up"
+></i></a>
+
+<div id="cart-panel"></div>
+
+{{ partial "include-resources" (dict
+  "context" .
+  "entryName" "cart-main"
+  "type" "js"
+  "defer" true
+) }}

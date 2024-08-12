@@ -1,0 +1,35 @@
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+  <title>SignalStuff</title>
+  <meta content="" name="description" />
+  <meta content="" name="keywords" />
+
+  <!-- Favicons -->
+  <link href="/assets/img/favicon.png" rel="icon" />
+  <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+
+  <!-- FontAwesome -->
+  <script src="https://kit.fontawesome.com/7b3d62a5a5.js" crossorigin="anonymous"></script>
+
+  <link rel="prefetch" href="{{ $.Site.Params.aNetHost }}/v1/Accept.js" />
+  <link rel="prefetch" href="{{ $.Site.Params.aNetHost }}/v1/AcceptCore.js" />
+
+  <script type="text/javascript">
+    window.backend_url = "{{ $.Site.Params.backendURL }}";
+    window.aNetHost = "{{ $.Site.Params.aNetHost }}";
+  </script>
+  {{ $resourcePath := (printf "forLayout/%s" .Layout) }}
+  {{ if .Params.resourcePath }}{{ $resourcePath = .Params.resourcePath }}{{ printf "<!-- should use %s -->" $resourcePath | safeHTML }}{{ end }}
+  {{ partial "include-resources" (dict
+    "context" .
+    "entryName" $resourcePath
+    "type" "css"
+  ) }}
+
+{{ printf "<!-- page layout %s -->" .Layout | safeHTML }}
+{{ printf "<!-- page type %s -->" .Type | safeHTML }}
+{{ printf "<!-- page kind %s -->" .Kind | safeHTML }}
+
+</head>

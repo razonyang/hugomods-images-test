@@ -1,0 +1,116 @@
+fragment ErrorResult on ErrorResult {
+  errorCode
+  message
+  __typename
+}
+
+fragment Address on Address {
+  id
+  fullName
+  company
+  streetLine1
+  streetLine2
+  city
+  province
+  postalCode
+  country {
+    id
+    code
+    name
+  }
+  phoneNumber
+  customFields {
+    firstName
+    lastName
+    isResidential
+  }
+  defaultShippingAddress
+  defaultBillingAddress
+}
+
+query activeCustomerAddresses {
+  activeCustomer {
+    id
+    addresses {
+      ...Address
+    }
+  }
+}
+
+mutation createCustomerAddress($input: CreateAddressInput!) {
+  createCustomerAddress(input: $input) {
+    ...Address
+  }
+}
+
+query activeCustomerOrders($options: OrderListOptions) {
+  activeCustomer {
+    id
+    orders(options: $options) {
+      items {
+        id
+        code
+        state
+        totalWithTax
+        orderPlacedAt
+      }
+      totalItems
+    }
+  }
+}
+
+mutation updateCustomerPasswordMutation($currentPassword: String!, $newPassword: String!) {
+  updateCustomerPassword(currentPassword: $currentPassword, newPassword: $newPassword) {
+    ... on Success {
+      success
+    }
+    ...ErrorResult
+  }
+}
+
+mutation deleteCustomerAddress($id: ID!) {
+  deleteCustomerAddress(id: $id) {
+    success
+  }
+}
+
+  mutation updateCustomerAddressMutation($input: UpdateAddressInput!) {
+  updateCustomerAddress(input: $input) {
+    ...Address
+  }
+}
+
+  mutation createCustomerAddressMutation($input: CreateAddressInput!) {
+  createCustomerAddress(input: $input) {
+    ...Address
+  }
+}
+
+query CurrentCustomer {
+  activeCustomer {
+    __typename
+    id
+    firstName
+    lastName
+    emailAddress
+    customFields {
+      callsign
+    }
+    addresses {
+      ...Address
+    }
+  }
+}
+
+mutation UpdateCustomer($input: UpdateCustomerInput!) {
+  updateCustomer(input: $input) {
+    __typename
+    id
+    firstName
+    lastName
+    emailAddress
+    customFields {
+      callsign
+    }
+  }
+}

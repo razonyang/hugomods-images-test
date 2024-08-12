@@ -1,0 +1,32 @@
+baseURL = '/'
+languageCode = 'en-us'
+title = 'SignalStuff'
+
+[permalinks]
+  post = "/:year/:month/:day/:slug/"
+
+[module]
+  [[module.imports]]
+    path = 'github.com/hugomods/images'
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+  year = "year"
+	month = "month"
+
+[outputs]
+    home = [ "HTML", "JSON", "RSS"]
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[params]
+backendURL = 'http://localhost:5100'
+aNetHost = 'https://jstest.authorize.net'
+
+  [params.hugomods]
+    [params.hugomods.images]
+      modern_format = "webp"
+
+[[params.strings]]

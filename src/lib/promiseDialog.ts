@@ -1,0 +1,87 @@
+
+// From https://github.com/mlesin/vue3-promise-dialog
+
+import {
+  AllowedComponentProps,
+  Component,
+  VNodeProps,
+  shallowReactive,
+} from "vue";
+
+export interface DialogInstance {
+  comp?: any;
+  dialog: Component;
+  wrapper: string;
+  props: Record<string, any>;
+  resolve: (data: any) => void;
+}
+
+export const dialogRefs = shallowReactive<DialogInstance[]>([]);
+
+/**
+ * Closes last opened dialog, resolving the promise with the return value of the dialog, or with the given
+ * data if any.
+ */
+export function closeDialog(data?: unknown) {
+  const lastDialog = dialogRefs.pop();
+  if (data === undefined) {
+    data = lastDialog?.comp.returnValue();
+  }
+  lastDialog?.resolve(data);
+}
+
+/**
+ * Extracts the type of props from a component definition.
+ */
+type PropsType<C extends Component> = C extends new (...args: any) => any
+  ? Omit<
+      InstanceType<C>["$props"],
+      keyof VNodeProps | keyof AllowedComponentProps
+    >
+  : never;
+
+/**
+ * Extracts the return type of the dialog from the setup function.
+ */
+type BindingReturnType<C extends Component> = C extends new (
+  ...args: any
+) => any
+  ? InstanceType<C> extends { returnValue: () => infer Y }
+    ? Y
+    : never
+  : never;
+
+/**
+ * Extracts the return type of the dialog either from the setup method or from the methods.
+ */
+type ReturnType<C extends Component> = BindingReturnType<C>;
+
+/**
+ * Opens a dialog.
+ * @param dialog The dialog you want to open.
+ * @param props The props to be passed to the dialog.
+ * @param wrapper The dialog wrapper you want the dialog to open into.
+ * @return A promise that resolves when the dialog is closed
+ */
+export function openDialog<C extends Component>(
+  dialog: C,
+  props?: PropsType<C>,
+  wrapper: string = "default"
+): Promise<ReturnType<C>> {
+  return new Promise<ReturnType<C>>((resolve) => {
+    dialogRefs.push({
+      dialog,
+      props: props || {},
+      wrapper,
+      resolve,
+    });
+  });
+}
+
+export const PromiseDialog = {
+  install: (app: any) => {
+    app.config.globalProperties.$close = (comp: any, alternateValue: any) => {
+      closeDialog(alternateValue);
+    };
+  },
+};

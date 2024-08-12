@@ -1,0 +1,140 @@
+<footer id="footer" class="footer">
+  <div class="footer-top">
+    <div class="container">
+      <div class="row gy-4 justify-content-center">
+        <div class="col-lg-3 col-6 footer-links">
+          <h4>Our Products</h4>
+          <ul>
+            <li>
+              <i class="fa-regular fa-chevron-right pe-1"></i>
+              <a href="/shop/#signal-sticks">Antennas</a>
+            </li>
+            <li>
+              <i class="fa-regular fa-chevron-right pe-1"></i>
+              <a href="/shop/#adapters">Adapters</a>
+            </li>
+            <li>
+              <i class="fa-regular fa-chevron-right pe-1"></i>
+              <a href="/shop/#fitting-and-style">Add ons</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-6 footer-links">
+          <h4>About Signalstuff</h4>
+          <ul>
+            <li>
+              <i class="fa-regular fa-chevron-right pe-1"></i>
+              <a href="/about-us/">About Us</a>
+            </li>
+            <li>
+              <i class="fa-regular fa-chevron-right pe-1"></i>
+              <a href="https://hamstudy.org">HamStudy</a>
+            </li>
+            <li>
+              <i class="fa-regular fa-chevron-right pe-1"></i>
+              <a href="https://exam.tools">ExamTools</a>
+            </li>
+            <li>
+              <i class="fa-regular fa-chevron-right pe-1"></i>
+              <a href="#">What's new</a>
+            </li>
+            <li>
+              <i class="fa-regular fa-chevron-right pe-1"></i>
+              <a href="/blog/">Blog</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-6 footer-links">
+          <h4>Legal</h4>
+          <ul>
+            <li>
+              <i class="fa-regular fa-chevron-right pe-1"></i>
+              <a href="https://hamstudy.org/content/privacy">Privacy Notice</a>
+            </li>
+            <li>
+              <i class="fa-regular fa-chevron-right pe-1"></i>
+              <a href="#">Cookie policy</a>
+            </li>
+            <li>
+              <i class="fa-regular fa-chevron-right pe-1"></i>
+              <a href="#">Website terms</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-6 footer-links">
+          <h4>Need Help?</h4>
+          <ul>
+            <li>
+              <i class="fa-regular fa-chevron-right pe-1"></i>
+              <a href="/support/">Support</a>
+            </li>
+            <li>
+              <i class="fa-regular fa-chevron-right pe-1"></i>
+              <a href="/support/#questions">Common Questions</a>
+            </li>
+            <li>
+              <i class="fa-regular fa-chevron-right pe-1"></i>
+              <a href="#">Delivery</a>
+            </li>
+            <li>
+              <i class="fa-regular fa-chevron-right pe-1"></i>
+              <a href="/support/#returns">Returns</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-3">
+    <div class="d-flex justify-content-center social-links mb-2">
+      <a href="https://www.facebook.com/signalsticks">
+        <i class="fa-brands fa-facebook"></i>
+      </a>
+    </div>
+    <div class="copyright">© SignalStuff {{ now.Year }}</div>
+  </div>
+</footer>
+
+<button
+  id="acceptPaymentButton"
+  type="button"
+  class="AcceptUI btn btn-primary"
+  data-billingAddressOptions='{"show":false, "required":false}'
+  data-apiLoginID="9Wpae3Fb9g"
+  data-clientKey="4jSCdn64w5TF95T9vn6edxMmn4FwcU4S9rj4hMwfxmwjbw6a8Hu6B3Z94rU7dE4x"
+  data-acceptUIFormBtnTxt="Submit"
+  data-acceptUIFormHeaderTxt="Card Information"
+  data-paymentOptions='{"showCreditCard": true}'
+  data-responseHandler="responseHandler"
+>
+</button>
+
+<div class="modal fade" id="successModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="thank-you-pop">
+          <i class="fa-sharp fa-regular fa-circle-check fa-2x pe-2 text-primary"></i>
+          <h1>Thank You!</h1>
+          <p>
+            Your order has been successfully placed. Please note the id below.
+          </p>
+          <h3 class="cupon-pop"></h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

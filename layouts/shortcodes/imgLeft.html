@@ -1,0 +1,4 @@
+{{ $imgSrc := .Get "src" }}{{ $imgAlt := .Get "alt" }}{{ $imgHeight := .Get "height"}}{{ $imgAlign := .Get "align" }}
+{{ $img := .Page.Resources.Get $imgSrc }}
+{{ $img = $img.Resize (printf "x%s" $imgHeight) }}
+<img src="{{ $img.RelPermalink }}" alt="{{ $imgAlt }}" align="{{ $imgAlign }}" />
