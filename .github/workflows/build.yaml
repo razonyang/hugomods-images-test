@@ -10,22 +10,19 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os:
+          - ubuntu-latest
+          - macos-latest
         version: ['0.123.0', '0.124.0', '0.125.0', '0.126.0', '0.127.0', '0.128.0', '0.131.0', '0.132.0']
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
 
       - name: Setup Hugo
-        if: ${{ matrix.os == 'ubuntu-latest' }}
         uses: peaceiris/actions-hugo@v3
         with:
           hugo-version: ${{ matrix.version }}
           extended: true
-
-      - name: Setup Hugo
-        if: ${{ matrix.os == 'macos-latest' }}
-        run: brew install hugo
 
       - name: Build
         run: for i in {1..50}; do hugo; done
