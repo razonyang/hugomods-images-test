@@ -25,7 +25,7 @@ jobs:
 
       - name: Setup Hugo
         if: ${{ matrix.os == 'macos-latest' }}
-        run: git -C $(brew --repo homebrew/core) checkout master && brew doctor && brew install hugo@${{ matrix.version }}
+        run: git -C $(brew --repo homebrew/core) checkout master && brew doctor && brew untap homebrew/core && brew install hugo@${{ matrix.version }}
 
       - name: Build
         run: for i in {1..50}; do hugo; done
